@@ -21,8 +21,8 @@ jobs:
               run: ./mvnw --batch-mode --no-transfer-progress verify --file pom.xml
 
             - name: Upload Jar
-              uses: actions/upload-artifact@v3
+              uses: actions/upload-artifact@v4
               with:
                 name: Upload results
                 path: |
-                    jmh-results.json
+                    target/jmh-results.json

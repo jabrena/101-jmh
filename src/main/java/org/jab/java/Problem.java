@@ -39,6 +39,7 @@ public class Problem {
     public void loopForEach() {
         for (String s : DATA_FOR_TESTING) {
             //
+            String value = s;
         }
     }
 
