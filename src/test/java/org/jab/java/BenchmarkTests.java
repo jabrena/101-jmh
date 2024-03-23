@@ -2,7 +2,9 @@ package org.jab.java;
 
 import org.junit.jupiter.api.Test;
 import org.openjdk.jmh.annotations.Mode;
+import org.openjdk.jmh.profile.AsyncProfiler;
 import org.openjdk.jmh.profile.GCProfiler;
+import org.openjdk.jmh.profile.JavaFlightRecorderProfiler;
 import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
@@ -26,19 +28,22 @@ public class BenchmarkTests {
                 .timeUnit(TimeUnit.MILLISECONDS)
                 .warmupTime(TimeValue.seconds(5))
                 .measurementTime(TimeValue.milliseconds(1))
-                .measurementIterations(10)
+                .measurementIterations(5)
                 .threads(Runtime.getRuntime().availableProcessors())
                 .warmupIterations(3)
                 //.shouldFailOnError(true)
                 .shouldDoGC(true)
                 .forks(2)
                 .jvmArgs("-Xmx6144m", "-Xms6144m")
+                
+                //https://github.com/openjdk/jmh/tree/master/jmh-core/src/main/java/org/openjdk/jmh/profile
                 //.addProfiler(StackProfiler.class)
                 .addProfiler(GCProfiler.class)
+                //.addProfiler(AsyncProfiler.class)
                 //.addProfiler(LinuxPerfProfiler.class)
                 //.addProfiler(ClassloaderProfiler.class)
                 //.addProfiler(CompilerProfiler.class)
-                //.addProfiler(JmhFlightRecorderProfiler.class)
+                .addProfiler(JavaFlightRecorderProfiler.class)
                 .build();
 
         new Runner(options).run();
