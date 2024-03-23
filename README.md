@@ -4,10 +4,10 @@ A simple example to review JMH
 
 ## How to build?
 
-```
-mvn clean test
-mvn versions:display-dependency-updates
-mvn versions:display-plugin-updates
+```bash
+./mvnw clean verify
+./mvnw versions:display-dependency-updates
+./mvnw versions:display-plugin-updates
 ```
 
 ## Concepts
@@ -62,4 +62,3 @@ Measurement annotations allows to set the default measurement parameters for the
 
 - https://openjdk.java.net/projects/code-tools/jmh/
 - https://www.baeldung.com/java-microbenchmark-harness
-
