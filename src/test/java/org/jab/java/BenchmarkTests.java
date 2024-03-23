@@ -39,11 +39,12 @@ public class BenchmarkTests {
                 .shouldDoGC(true)
                 .forks(2)
                 .jvmArgs("-Xmx6144m", "-Xms6144m")
+                //"-agentpath:/workspace/101-jmh/async-profiler-3.0-linux-x64/lib/libasyncProfiler.so=start,output=flamegraph,event=cpu")
                 //https://github.com/openjdk/jmh/tree/master/jmh-core/src/main/java/org/openjdk/jmh/profile
                 .addProfiler(StackProfiler.class)
                 .addProfiler(GCProfiler.class)
                 //.addProfiler(AsyncProfiler.class, "output=flamegraph")
-                .addProfiler(LinuxPerfProfiler.class)
+                //.addProfiler(LinuxPerfProfiler.class)
                 .addProfiler(ClassloaderProfiler.class)
                 .addProfiler(CompilerProfiler.class)
                 .addProfiler(JavaFlightRecorderProfiler.class, "dir=./jfr")

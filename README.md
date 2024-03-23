@@ -62,6 +62,7 @@ Measurement annotations allows to set the default measurement parameters for the
 wget https://github.com/async-profiler/async-profiler/releases/download/v3.0/async-profiler-3.0-linux-x64.tar.gz
 tar -xvf async-profiler-3.0-linux-x64.tar.gz
 export LD_LIBRARY_PATH=/workspace/101-jmh/async-profiler-3.0-linux-x64/lib/libasyncProfiler.so:$LD_LIBRARY_PATH
+echo $LD_LIBRARY_PATH
 ```
 
 ## References
