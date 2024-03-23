@@ -1,0 +1,26 @@
+image: gitpod/workspace-full
+
+# List the start up tasks. Learn more: https://www.gitpod.io/docs/configure/workspaces/tasks
+tasks:
+  - name: Script Task
+    init: echo 'init script' # runs during prebuild => https://www.gitpod.io/docs/configure/projects/prebuilds
+    command: echo 'start script'
+  - before: sdk install java 22-amzn < /dev/null
+
+# Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
+vscode:
+  extensions:
+    - vscjava.vscode-java-pack
+    - vscjava.vscode-java-debug
+    - vscjava.vscode-maven
+    - vscjava.vscode-java-dependency
+    - vscjava.vscode-java-test
+    - vscjava.vscode-spring-boot-dashboard
+    - vscjava.vscode-spring-initializr
+    - redhat.java
+    - vmware.vscode-boot-dev-pack
+    - vmware.vscode-spring-boot
+    - ms-azuretools.vscode-docker
+    - redhat.vscode-xml
+    - redhat.vscode-yaml
+    - editorconfig.editorconfig
