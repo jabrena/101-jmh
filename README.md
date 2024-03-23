@@ -55,10 +55,17 @@ Measurement annotations allows to set the default measurement parameters for the
 ```
 
 - https://jmh.morethan.io/
-- https://nilskp.github.io/jmh-charts/
-- https://github.com/akarnokd/jmh-compare-gui
+
+## Flamegraph support
+
+```
+wget https://github.com/async-profiler/async-profiler/releases/download/v3.0/async-profiler-3.0-linux-x64.tar.gz
+tar -xvf async-profiler-3.0-linux-x64.tar.gz
+export LD_LIBRARY_PATH=/workspace/101-jmh/async-profiler-3.0-linux-x64/lib/libasyncProfiler.so:$LD_LIBRARY_PATH
+```
 
 ## References
 
 - https://openjdk.java.net/projects/code-tools/jmh/
 - https://www.baeldung.com/java-microbenchmark-harness
+- https://github.com/async-profiler/async-profiler/releases

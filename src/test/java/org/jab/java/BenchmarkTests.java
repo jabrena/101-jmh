@@ -3,8 +3,12 @@ package org.jab.java;
 import org.junit.jupiter.api.Test;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.profile.AsyncProfiler;
+import org.openjdk.jmh.profile.ClassloaderProfiler;
+import org.openjdk.jmh.profile.CompilerProfiler;
 import org.openjdk.jmh.profile.GCProfiler;
 import org.openjdk.jmh.profile.JavaFlightRecorderProfiler;
+import org.openjdk.jmh.profile.LinuxPerfProfiler;
+import org.openjdk.jmh.profile.StackProfiler;
 import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
@@ -35,15 +39,14 @@ public class BenchmarkTests {
                 .shouldDoGC(true)
                 .forks(2)
                 .jvmArgs("-Xmx6144m", "-Xms6144m")
-                
                 //https://github.com/openjdk/jmh/tree/master/jmh-core/src/main/java/org/openjdk/jmh/profile
-                //.addProfiler(StackProfiler.class)
+                .addProfiler(StackProfiler.class)
                 .addProfiler(GCProfiler.class)
-                //.addProfiler(AsyncProfiler.class)
-                //.addProfiler(LinuxPerfProfiler.class)
-                //.addProfiler(ClassloaderProfiler.class)
-                //.addProfiler(CompilerProfiler.class)
-                .addProfiler(JavaFlightRecorderProfiler.class)
+                //.addProfiler(AsyncProfiler.class, "output=flamegraph")
+                .addProfiler(LinuxPerfProfiler.class)
+                .addProfiler(ClassloaderProfiler.class)
+                .addProfiler(CompilerProfiler.class)
+                .addProfiler(JavaFlightRecorderProfiler.class, "dir=./jfr")
                 .build();
 
         new Runner(options).run();
