@@ -2,13 +2,7 @@ package org.jab.java;
 
 import org.junit.jupiter.api.Test;
 import org.openjdk.jmh.annotations.Mode;
-import org.openjdk.jmh.profile.AsyncProfiler;
-import org.openjdk.jmh.profile.ClassloaderProfiler;
-import org.openjdk.jmh.profile.CompilerProfiler;
-import org.openjdk.jmh.profile.GCProfiler;
-import org.openjdk.jmh.profile.JavaFlightRecorderProfiler;
-import org.openjdk.jmh.profile.LinuxPerfProfiler;
-import org.openjdk.jmh.profile.StackProfiler;
+import org.openjdk.jmh.profile.*;
 import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
@@ -39,13 +33,11 @@ public class BenchmarkTests {
                 .shouldDoGC(true)
                 .forks(1)
                 .jvmArgs("-Xmx6144m", "-Xms6144m")
-                //"-agentpath:/workspace/101-jmh/async-profiler-3.0-linux-x64/lib/libasyncProfiler.so=start," + 
-                //"file=./flamegraph.html")
 
                 //https://github.com/openjdk/jmh/tree/master/jmh-core/src/main/java/org/openjdk/jmh/profile
                 .addProfiler(StackProfiler.class)
                 .addProfiler(GCProfiler.class)
-                //.addProfiler(AsyncProfiler.class, "output=flamegraph")
+                //.addProfiler(AsyncProfiler.class, "output=flamegraph.html")
                 //.addProfiler(LinuxPerfProfiler.class)
                 .addProfiler(ClassloaderProfiler.class)
                 .addProfiler(CompilerProfiler.class)
