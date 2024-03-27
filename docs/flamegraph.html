@@ -14,7 +14,7 @@
 	#status {left: 0}
 	#match {right: 0}
 	#reset {cursor: pointer}
-	#canvas {width: 100%; height: 416px}
+	#canvas {width: 100%; height: 400px}
 </style>
 </head>
 <body style='font: 12px Verdana, sans-serif'>
@@ -32,7 +32,7 @@
 	let root, rootLevel, px, pattern;
 	let level0 = 0, left0 = 0, width0 = 0;
 	let reverse = false;
-	const levels = Array(26);
+	const levels = Array(25);
 	for (let h = 0; h < levels.length; h++) {
 		levels[h] = [];
 	}
@@ -251,32 +251,34 @@
 
 const cpool = [
 'all',
-' AccessBarrierSupport::resolve_unknown_oop_ref_strength',
-'&Internal::PostRuntimeDispatch<G1BarrierSet::AccessBarrier<1097844ull, G1BarrierSet>, (AccessInternal::BarrierType)2, 1097844ull>::oop_access_barrier',
-'`5292148ull, G1BarrierSet>, (AccessInternal::BarrierType)0, 5292148ull>::oop_access_barrier',
+' AccessInternal::PostRuntimeDispatch<G1BarrierSet::AccessBarrier<5292148ull, G1BarrierSet>, (AccessInternal::BarrierType)0, 5292148ull>::oop_access_barrier',
+'`802934ull, G1BarrierSet>, (AccessInternal::BarrierType)3, 802934ull>::oop_access_barrier',
 ' FindPrimes.main',
-' G1BarrierSet::AccessBarrier<802934ull, G1BarrierSet>::oop_load_in_heap_at',
 ' InterfaceSupport::serialize_thread_state_internal',
-' JNIHandleBlock::allocate_handle',
-')s::make_local',
+' JNIHandles::make_local',
 '!avaThread::is_Java_thread',
 ',run',
 ',thread_main_inner',
 '$_java_io_FileOutputStream_writeBytes',
 '!vmtiExport::load_agent_library',
-' Stub<AMD64ArrayIndexOfStub.indexOf1Byte>',
+' Monitor::wait',
+' ResourceMark::reset_to_mark',
 ' Thread::call_run',
 '&InVMfromNative::~ThreadInVMfromNative',
+' WatcherThread::run',
+'/sleep',
 ' __cxx_global_var_init.4',
-'!pthread_start',
+'!os_semaphore_wait.cold.1',
+'!platform_memmove$VARIANT$Rosetta',
+'"thread_start',
 ' attach_listener_thread_entry',
 ' check_bounds',
 '!om/sun/tools/javac/launcher/Main.execute',
 'Bmain',
 'Brun',
+' handleWrite',
 ' java/io/BufferedOutputStream.flush',
 'BBuffer',
-'=write',
 '0Writer.flushBuffer',
 '7newLine',
 '7write',
@@ -289,159 +291,140 @@ const cpool = [
 '9ln',
 '4write',
 '(Writer.write',
-'%lang/String.getChars',
-'0ConcatHelper.newString',
+'%lang/Integer.stringSize',
+'*String.getChars',
+'0ConcatHelper.mixLen',
+'=newString',
+'=prepend',
 '0Latin1.getChars',
 '*invoke/DirectMethodHandle$Holder.invokeStatic',
 '1Invokers$Holder.linkToTargetMethod',
 '1LambdaForm$MH/599491651.invoke',
 '?673186785.invoke',
-'1MethodHandle.invokeBasic',
 '1StringConcatFactory$MethodHandleInlineCopyStrategy.newArray',
 '*reflect/Method.invoke',
-'%util/ArrayList.<init>',
-'4toArray',
-'/s.copyOf',
-'$_lang_ref_Reference::is_referent_field',
-'$x/management/MBeanServerFactory.findMBeanServer',
-'!byte_disjoint_arraycopy',
+'!byte_arraycopy',
 '!dk/internal/misc/Unsafe.allocateUninitializedArray',
 '-reflect/DelegatingMethodAccessorImpl.invoke',
 '5NativeMethodAccessorImpl.invoke',
 'T0',
 '!ni_ExceptionOccurred',
-'$GetByteArrayRegion',
+'$GetArrayLength',
+'\'ByteArrayRegion',
 '\'ObjectField',
+'!sqrt',
 ' load_agent',
-' org/graalvm/compiler/hotspot/management/LibGraalMBean$Factory.findMBeanServer',
-'^poll',
-'^run',
 ' sun/nio/cs/StreamEncoder.flushBuffer',
 '9implFlushBuffer',
 '9write',
 '>Bytes',
 ' thread_native_entry',
 '\'start',
-' void AccessInternal::arraycopy_conjoint<signed char>',
 ' write',
 '%Bytes'
 ];
 unpack(cpool);
 
-n(3,2431)
-u(177,2429)
+n(3,2421)
+u(193,2419)
+u(201)
 u(185)
-u(169)
-u(385)
+u(417)
+u(441)
 u(449)
 u(457)
-u(465)
-u(33)
-f(289,9,2279,144)
-u(273,64)
-f(217,11,2,2)
-f(266,12,1,1)
-u(546)
-f(226,11,1,3)
-u(306)
-u(234)
-f(257,11,3,57)
-u(529)
-f(537,13,1,56,1,0,0)
-u(553,56,1,0,0)
-u(297,56,1,0,0)
-u(193,55)
-u(201)
-u(241)
-u(249)
-f(99,20,1,54)
-u(475,1)
-n(483)
-n(595,52)
-u(52,2)
-n(68,1)
-n(76)
-n(132,3)
-n(164,1)
+u(25)
+f(305,9,2282,132)
+f(289,10,1,62)
+u(233,2)
+f(282,12,1,1)
+u(530)
+f(242,11,1,2)
+u(322)
+u(250)
+f(338,14,1,1)
+u(370)
+f(273,11,1,58)
+u(513)
+u(521,58,1,0,0)
+u(537,58,1,0,0)
+u(313,58,1,0,0)
+f(217,16,1,57)
+u(225)
+u(257)
+u(265)
+u(75)
+u(211,1)
+n(491,2)
+n(571,54)
+u(44,2)
+n(52)
+n(139)
+n(155,1)
 n(475,2)
-u(76,1)
-n(132)
-u(52)
-f(483,22,1,2)
-u(52,1)
-n(132)
-u(52)
-f(491,22,1,9)
-f(44,23,3,4)
-f(12,24,2,1)
-n(420)
-f(52,23,1)
-n(132)
-f(580,22,1)
-n(587,30)
-f(435,16,30,1)
-f(281,10,1,80)
-u(297)
-u(217,2)
-u(266)
-u(546)
-f(257,12,2,71)
-u(529)
-f(537,14,2,69,3,0,0)
-u(553,69,3,0,0)
-u(297,69,3,0,0)
-u(193,67,1,0,0)
-u(201,67,1,0,0)
-u(241,67,1,0,0)
-u(249,67,1,0,0)
-u(99)
-f(483,22,1,1)
-n(491)
-n(595,64)
+f(116,23,1,1)
+f(483,22,1)
+u(180)
+f(491,22,1,3)
+f(116,23,1,2)
+f(36,24,1,1)
+f(563,22,1,41)
+f(297,10,41,69)
+u(313)
+f(273,12,2,64)
+u(513)
+f(521,14,1,63)
+u(537)
+u(313)
+u(217)
+u(225)
+u(257)
+u(265)
+f(75,21,2,61)
+u(483,2)
+n(491,1)
+n(571,58)
 u(20,1)
 n(52)
-n(132)
 n(139)
-n(491,5)
-u(28,1)
-n(44,3)
-f(420,25,1,2)
-f(60,24,2,1)
-f(580,23,1,2)
-n(587,53)
-f(210,17,53,1)
-n(435)
-f(306,12,1,7)
-u(234)
-f(314,14,4,3)
-u(330)
-f(115,16,1,2)
-f(345,9,2,6)
-u(353)
-u(337,5)
-u(321,4)
-n(377,1)
-u(441)
-f(361,11,1)
-u(337)
-u(369)
-f(521,1,1)
-u(513)
-u(505)
-u(425)
+n(147)
+n(180)
+n(467)
+u(36)
+f(483,23,1)
+u(100)
+f(491,23,1,3)
+f(12,24,2,1)
+f(499,23,1)
+n(563,47)
+f(322,12,47,3)
+u(250)
+f(338,14,2,1)
+u(370)
+f(385,9,1,5)
 u(393)
-u(401)
-u(409)
-u(414,1,0,1,0)
-f(571,1,1)
-u(147)
-u(564)
-u(124)
-u(84)
-u(92)
-u(156)
-u(500)
+u(377,3)
+u(345,1)
+u(330)
+f(353,12,1)
+n(409)
+u(433)
+f(401,11,1,2)
+u(377)
+u(361)
+f(427,14,1,1)
+f(555,1,1,2)
+u(163)
+u(548)
 u(108)
+u(60,1)
+u(68)
+u(172)
+u(508)
+u(84)
+f(124,5,1)
+u(132)
+u(92)
 
 search();
 </script></body></html>
