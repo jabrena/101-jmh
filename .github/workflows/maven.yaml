@@ -1,0 +1,84 @@
+name: CI Builds
+
+on: [push]
+
+jobs:
+  submodules:
+    name: Build Submodules
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        java-version: [22, 23, 24]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true  # Fetches all submodules
+      - uses: actions/setup-java@v5
+        with:
+          distribution: 'graalvm' # See 'Supported distributions' for available options
+          java-version: ${{ matrix.java-version }}
+      - name: Maven build submodules
+        run: |
+          cd submodules
+          ./mvnw --batch-mode --no-transfer-progress verify --file pom.xml -Dmaven.compiler.release=${{ matrix.java-version }}
+          java -cp benchmarks/target/benchmarks-1.0-SNAPSHOT-benchmarks.jar info.jab.demo.BenchmarkLoop -wi 1 -i 1 -f 1
+
+  benchmarks-as-tests:
+    name: Build Benchmarks As Tests
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        java-version: [22, 23, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v5
+        with:
+          distribution: 'graalvm' # See 'Supported distributions' for available options
+          java-version: ${{ matrix.java-version }}
+      - name: Maven build benchmarks-as-tests
+        run: |
+          cd benchmarks-as-tests
+          ./mvnw --batch-mode --no-transfer-progress verify --file pom.xml -Dmaven.compiler.release=${{ matrix.java-version }}
+
+  benchmarks-isolated:
+    name: Build Benchmarks Isolated
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        java-version: [22, 23, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v5
+        with:
+          distribution: 'graalvm' # See 'Supported distributions' for available options
+          java-version: ${{ matrix.java-version }}
+      - name: Maven build benchmarks-isolated
+        run: |
+          cd benchmarks-isolated
+          ./mvnw --batch-mode --no-transfer-progress install --file pom.xml -Dmaven.compiler.release=${{ matrix.java-version }}
+          cd benchmarks
+          ./mvnw --batch-mode --no-transfer-progress package --file pom.xml -Dmaven.compiler.release=${{ matrix.java-version }}
+          java -cp target/benchmarks-1.0-SNAPSHOT-benchmarks.jar info.jab.demo.BenchmarkLoop -wi 1 -i 1 -f 1
+
+  maven-profiles:
+    name: Build Maven Profiles
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        java-version: [22, 23, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v5
+        with:
+          distribution: 'graalvm' # See 'Supported distributions' for available options
+          java-version: ${{ matrix.java-version }}
+      - name: Maven build maven-profiles
+        run: |
+          cd maven-profiles
+          ./mvnw --batch-mode --no-transfer-progress verify --file pom.xml -P jmh -Dmaven.compiler.release=${{ matrix.java-version }}
+          java -jar target/maven-profiles-1.0-SNAPSHOT-benchmarks.jar BenchmarkLoop -wi 1 -i 1 -f 1
+
