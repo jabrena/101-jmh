@@ -1,24 +1,13 @@
-# 101-jmh
+# 101 JMH
 
-A simple example to review JMH
-
-## What is JMH?
-
-JMH is a Java harness for building, running, and analysing nano/micro/milli/macro benchmarks
-written in Java and other languages targetting the JVM.
-
-## How to build?
-
-```bash
-sdk env install
-./mvnw clean verify
-
-# Other commands
-./mvnw versions:display-dependency-updates
-./mvnw versions:display-plugin-updates
-```
+- [Submodules](./submodules/README.md)
+- [Without any module + Isolated JMH tests](./benchmarks-isolated/README.md)
+- [Without any module + Maven profiles](./maven-profiles/README.md)
+- [JHM as Tests](./benchmarks-as-tests/README.md)
 
 ## References
 
-- https://openjdk.java.net/projects/code-tools/jmh/
+- https://openjdk.org/projects/code-tools/jmh/
+- https://mail.openjdk.org/mailman/listinfo/jmh-dev
 - https://jmh.morethan.io/
+
